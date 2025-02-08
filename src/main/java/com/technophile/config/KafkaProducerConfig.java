@@ -18,29 +18,35 @@ public class KafkaProducerConfig {
 
     @Bean
     public NewTopic createTopic(){
-        return new NewTopic("java-demo3", 4, (short) 1);
+        return new NewTopic("java-demo", 3, (short) 1);
     }
 
-//    @Bean
-//    public Map<String,Object> producerConfig(){
-//        Map<String,Object> props=new HashMap<>();
-//        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
-//                "localhost:9092");
-//        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
-//                StringSerializer.class);
-//        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
-//                JsonSerializer.class);
-//        return props;
-//    }
-//
-//    @Bean
-//    public ProducerFactory<String,Object> producerFactory(){
-//        return new DefaultKafkaProducerFactory<>(producerConfig());
-//    }
-//
-//    @Bean
-//    public KafkaTemplate<String,Object> kafkaTemplate(){
-//        return new KafkaTemplate<>(producerFactory());
-//    }
+    /**
+     * producer to topic we are serializing the data/message in the form of json/obj
+     * from the producer we are sending byte array to topic
+     * at the consumer end we are deserializing/converting byte array to object from topic
+     */
+
+    @Bean
+    public Map<String,Object> producerConfig(){
+        Map<String,Object> props=new HashMap<>();
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
+                "localhost:9092");
+        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
+                StringSerializer.class);
+        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
+                JsonSerializer.class);
+        return props;
+    }
+
+    @Bean
+    public ProducerFactory<String,Object> producerFactory(){
+        return new DefaultKafkaProducerFactory<>(producerConfig());
+    }
+
+    @Bean
+    public KafkaTemplate<String,Object> kafkaTemplate(){
+        return new KafkaTemplate<>(producerFactory());
+    }
 
 }

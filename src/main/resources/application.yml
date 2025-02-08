@@ -1,12 +1,14 @@
 spring:
   application:
          name: kafka-producer-springboot
-  kafka:
-    producer:
-      bootstrap-servers:
-        - localhost:9092
+#  kafka:
+#    producer:
+#      bootstrap-servers:
+#        - localhost:9092
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
 server:
   port: 9191
   servlet:
     context-path: /producer-app
-

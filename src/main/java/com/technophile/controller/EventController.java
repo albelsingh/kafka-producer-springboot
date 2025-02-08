@@ -1,5 +1,6 @@
 package com.technophile.controller;
 
+import com.technophile.dto.Customer;
 import com.technophile.service.KafkaMessagePublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,10 +26,10 @@ public class EventController {
         }
     }
 
-//    @PostMapping("/publish")
-//    public void sendEvents(@RequestBody Customer customer) {
-//        publisher.sendEventsToTopic(customer);
-//    }
+    @PostMapping("/publish")
+    public void sendEvents(@RequestBody Customer customer) {
+        publisher.sendEventsToTopic(customer);
+    }
 
 
 }
