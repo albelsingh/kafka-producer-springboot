@@ -14,7 +14,11 @@ public class KafkaMessagePublisher {
     private KafkaTemplate<String,Object> template;
 
     public void sendMessageToTopic(String message){
-        CompletableFuture<SendResult<String, Object>> future = template.send("java-demo", message);
+        CompletableFuture<SendResult<String, Object>> future = template.send("sunday", message);
+        /**
+         * pushing message into specific partition
+         */
+        //CompletableFuture<SendResult<String, Object>> future = template.send("sunday",0,null, message);
         future.whenComplete((result,ex)->{
             if (ex == null) {
                 System.out.println("Sent message=[" + message +

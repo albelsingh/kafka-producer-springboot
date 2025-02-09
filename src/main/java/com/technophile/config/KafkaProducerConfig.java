@@ -18,7 +18,7 @@ public class KafkaProducerConfig {
 
     @Bean
     public NewTopic createTopic(){
-        return new NewTopic("java-demo", 3, (short) 1);
+        return new NewTopic("sunday", 5, (short) 1);
     }
 
     /**
