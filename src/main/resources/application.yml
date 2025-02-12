@@ -12,3 +12,7 @@ server:
   port: 9191
   servlet:
     context-path: /producer-app
+
+app:
+  topic:
+    name: kafka-error-handle
