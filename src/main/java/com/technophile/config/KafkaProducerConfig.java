@@ -24,6 +24,11 @@ public class KafkaProducerConfig {
         return new NewTopic(topicName, 3, (short) 1);
     }
 
+    @Bean
+    public NewTopic createNewTopic(){
+        return new NewTopic("monday", 3, (short) 1);
+    }
+
     /**
      * producer to topic we are serializing the data/message in the form of json/obj
      * from the producer we are sending byte array to topic

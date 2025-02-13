@@ -13,7 +13,7 @@ public class EventController {
     @Autowired
     private KafkaMessagePublisher publisher;
 
-    @GetMapping("/publish/{message}")
+    @PostMapping("/publish/{message}")
     public ResponseEntity<?> publishMessage(@PathVariable String message) {
         try {
             for (int i = 0; i <= 1000; i++) {

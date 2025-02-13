@@ -40,7 +40,7 @@ public class KafkaMessagePublisher {
     }
 
     public void sendMessageToTopic(String message){
-        CompletableFuture<SendResult<String, Object>> future = template.send("sunday", message);
+        CompletableFuture<SendResult<String, Object>> future = template.send("monday", message);
         /**
          * pushing message into specific partition
          */
